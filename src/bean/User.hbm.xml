@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bean.User" table="user">
+		<id name="userId" type="java.lang.Integer">
+			<column name="user_id" />
+			<generator class="increment" />
+		</id>
+		<property name="userName" type="java.lang.String">
+			<column name="user_name"  />
+		</property>
+		<property name="password" type="java.lang.String">
+			<column name="password"   />
+		</property>
+		
+		<property name="gender" type="java.lang.Integer">
+			<column name="gender" />
+		</property>
+		<set name="demos" inverse="true" lazy="false">
+			<key>
+				<column name="user_id" not-null="true" />
+			</key>
+			<one-to-many class="bean.Demo" />
+		</set>
+		
+	</class>
+</hibernate-mapping>

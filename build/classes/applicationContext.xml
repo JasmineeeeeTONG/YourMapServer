@@ -16,7 +16,7 @@
 		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/test?characterEncoding=utf8"></property>
 
 		<property name="user" value="root" />
-		<property name="password" value="guang123456" />
+		<property name="password" value="!!!连接数据库!!!" />
 
 		<property name="maxPoolSize" value="12" />
 		<property name="minPoolSize" value="0" />
@@ -40,6 +40,11 @@
 		scope="prototype">
 		<property name="userService" ref="UserService"></property>
 	</bean>
+	
+	<bean id="userRegisterAction" class="action.UserRegister"
+		scope="prototype">
+		<property name="userService" ref="UserService"></property>
+	</bean>	
 	
 
 	<bean id="userLogoutAction" class="action.UserLogout"

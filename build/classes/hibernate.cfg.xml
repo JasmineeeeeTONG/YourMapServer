@@ -30,9 +30,12 @@
               
 
 		<mapping resource="bean/User.hbm.xml" />
-		<mapping resource="bean/Demo.hbm.xml" />
-					
-	
+		<mapping resource="bean/Sight.hbm.xml" />
+		<mapping resource="bean/SightType.hbm.xml" />
+		<mapping resource="bean/Score.hbm.xml" />
+		<mapping resource="bean/Footprint.hbm.xml" />
+		<mapping resource="bean/Comment.hbm.xml" />
+		<mapping resource="bean/Img.hbm.xml" />
 		
 	</session-factory>
 

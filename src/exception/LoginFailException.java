@@ -7,7 +7,7 @@ public class LoginFailException extends BaseException{
 	public LoginFailException(){
 		reminder = new WarnReminder();
 		reminder.setError_type(100);
-		reminder.setError_message("repeat_error");
+		reminder.setError_message("login_fail_error");
 	}
 	
 }

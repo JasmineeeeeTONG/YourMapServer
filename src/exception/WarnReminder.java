@@ -3,9 +3,9 @@ package exception;
 import java.io.Serializable;
 
 /**
- * 温馨提示类
- * @author tom
- * @since 2014-06-7
+ * 错误提示类
+ * @author GAO
+ * @since 2016-05-28
  */
 public class WarnReminder implements Serializable{
 

@@ -3,7 +3,6 @@ package service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import bean.Demo;
 import bean.User;
 import dao.EntityDAO;
 import exception.LoginFailException;
@@ -26,7 +25,7 @@ public class UserServiceImpl implements IUserService {
 
 		hql = "from User where password=? and user_name=?";
 		params.add(user.getPassword());
-		params.add(user.getUserName());
+		params.add(user.getUsername());
 
 		User u = (User) entityDAO.findUniqueByHql(hql, params);
 		if (u == null) {
@@ -37,19 +36,25 @@ public class UserServiceImpl implements IUserService {
 	}
 	
 	@Override
-	public void addUser(User user, Demo demo) {
-		if (entityDAO.isPropertyExist(User.class, "userName",
-				user.getUserName())) {
+	public User addUser(User user) {
+		// TODO Auto-generated method stub
+		String hql = "";
+		List<Object> params = new ArrayList<Object>();
+
+		hql = "from User where user_name=?";
+		params.add(user.getUsername());
+
+		User u = (User) entityDAO.findUniqueByHql(hql, params);
+		if (u != null) {
 			throw new RepeatException();
 		}
-		entityDAO.save(user);
-
-	}
-
-	@Override
-	public void addUser(User u) {
-		// TODO Auto-generated method stub
 		
+		u = new User();
+		u.setUsername(user.getUsername());
+		u.setPassword(user.getPassword());
+		u.setLoginType("yourmap");
+		entityDAO.save(u);
+		return u;
 	}
 
 	

@@ -1,31 +1,23 @@
 package bean;
 
-import java.util.HashSet;
-import java.util.Set;
-
 
 public class User implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int userId;
 	
-	private String userName;
+	private String username;
 	
 	private String password;
 	
-	private int gender;
+	private String nickname;
 	
-	private Set<Demo> demos = new HashSet<Demo>();
+	private String profileImg;
+	
+	private String loginType;
+	
 
-
-	public Set<Demo> getDemos() {
-		return demos;
-	}
-
-	public void setDemos(Set<Demo> demos) {
-		this.demos = demos;
-	}
-
+	
 	public int getUserId() {
 		return userId;
 	}
@@ -34,12 +26,12 @@ public class User implements java.io.Serializable {
 		this.userId = userId;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
@@ -50,13 +42,28 @@ public class User implements java.io.Serializable {
 		this.password = password;
 	}
 
-	public int getGender() {
-		return gender;
+	public String getLoginType() {
+		return loginType;
 	}
 
-	public void setGender(int gender) {
-		this.gender = gender;
+	public void setLoginType(String loginType) {
+		this.loginType = loginType;
 	}
-	
+
+	public String getProfileImg() {
+		return profileImg;
+	}
+
+	public void setProfileImg(String profileImg) {
+		this.profileImg = profileImg;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 
 }

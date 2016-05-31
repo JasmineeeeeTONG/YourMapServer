@@ -7,22 +7,24 @@
 			<column name="user_id" />
 			<generator class="increment" />
 		</id>
-		<property name="userName" type="java.lang.String">
+		<property name="username" type="java.lang.String">
 			<column name="user_name"  />
 		</property>
 		<property name="password" type="java.lang.String">
 			<column name="password"   />
 		</property>
 		
-		<property name="gender" type="java.lang.Integer">
-			<column name="gender" />
+		<property name="nickname" type="java.lang.String">
+			<column name="nickname" />
 		</property>
-		<set name="demos" inverse="true" lazy="false">
-			<key>
-				<column name="user_id" not-null="true" />
-			</key>
-			<one-to-many class="bean.Demo" />
-		</set>
 		
+		<property name="profileImg" type="java.lang.String">
+			<column name="profileImg" />
+		</property>
+		
+		<property name="loginType" type="java.lang.String">
+			<column name="loginType" />
+		</property>		
+	
 	</class>
 </hibernate-mapping>

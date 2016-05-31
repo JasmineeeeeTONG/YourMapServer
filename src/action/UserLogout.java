@@ -36,7 +36,7 @@ public class UserLogout extends ActionSupport {
 		
 		
 		if (user != null) {
-			System.out.println(user.getUserName());
+			System.out.println(user.getUsername());
 
 			session.removeAttribute("user");
 

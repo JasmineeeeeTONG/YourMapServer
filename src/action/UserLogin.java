@@ -14,7 +14,6 @@ import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import bean.Demo;
 import bean.User;
 import service.IUserService;
 import service.ValidateService;
@@ -23,7 +22,7 @@ import service.ValidateService;
 public class UserLogin extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 
-	private String userName;
+	private String username;
 	private String password;
 
 	private User user;
@@ -34,11 +33,11 @@ public class UserLogin extends ActionSupport{
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public String execute() {
-		System.out.println("========");
+		System.out.println("===User Login Action execute===");
 		Set params = new HashSet();
-		params.add(userName);
+		params.add(username);
 		params.add(password);
-		System.out.println(userName);
+		System.out.println(username);
 		System.out.println(password);
 		//要求params中内容不为空
 		ValidateService.ValidateNecessaryArguments(params);
@@ -55,13 +54,12 @@ public class UserLogin extends ActionSupport{
 		if (sessionPool == null) {
 			sessionPool = new HashMap<Integer, HttpSession>();
 		}
-
-
+		
 		User u = new User();
-		u.setUserName(userName);
+		u.setUsername(username);
 		u.setPassword(password);
 
-		userService.login(u);
+		u = userService.login(u);
 
 		Integer userID = u.getUserId();
 		
@@ -80,10 +78,12 @@ public class UserLogin extends ActionSupport{
 		return SUCCESS;
 	}
 
-
+	public String getUsername() {
+		return username;
+	}
 	
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {

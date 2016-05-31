@@ -28,6 +28,14 @@
 			</result>
 		</action>
 		
+		<action name="userRegister" class="userRegisterAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message,user.*
+				</param>
+			</result>
+		</action>		
+		
 		<action name="userLogout" class="userLogoutAction">
 			<result name="success" type="json">
 				<param name="includeProperties">

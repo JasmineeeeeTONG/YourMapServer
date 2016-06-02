@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bean.Footprint" table="footprint">
+		<id name="footprintId" type="java.lang.Integer">
+			<column name="footprintId" />
+			<generator class="increment" />
+		</id>
+		<property name="sightId" type="java.lang.Integer">
+			<column name="sightId"  />
+		</property>
+		<property name="userId" type="java.lang.Integer">
+			<column name="userId"   />
+		</property>
+		
+		<property name="footprintType" type="java.lang.String">
+			<column name="footprintType" />
+		</property>
+	
+	</class>
+</hibernate-mapping>

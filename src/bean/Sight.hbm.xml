@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bean.Sight" table="sight">
+		<id name="sightId" type="java.lang.Integer">
+			<column name="sightId" />
+			<generator class="increment" />
+		</id>
+		<property name="lng" type="java.lang.Double">
+			<column name="lng"  />
+		</property>
+		<property name="lat" type="java.lang.Double">
+			<column name="lat"   />
+		</property>
+		
+		<property name="sightName" type="java.lang.String">
+			<column name="sightName" />
+		</property>
+		
+		<property name="description" type="java.lang.String">
+			<column name="description" />
+		</property>
+		
+		<property name="detail" type="java.lang.String">
+			<column name="detail" />
+		</property>		
+		
+		<property name="sightImg" type="java.lang.String">
+			<column name="sightImg" />
+		</property>
+		
+		<property name="sightScoreAvg" type="java.lang.Double">
+			<column name="sightScoreAvg" />
+		</property>		
+	
+	</class>
+</hibernate-mapping>

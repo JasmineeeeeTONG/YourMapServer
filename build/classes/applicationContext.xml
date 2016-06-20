@@ -13,10 +13,10 @@
 		destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
 
-		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/test?characterEncoding=utf8"></property>
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/adweb?characterEncoding=utf8"></property>
 
 		<property name="user" value="root" />
-		<property name="password" value="......" />
+		<property name="password" value="guang123456" />
 
 		<property name="maxPoolSize" value="12" />
 		<property name="minPoolSize" value="0" />
@@ -46,9 +46,108 @@
 		<property name="userService" ref="UserService"></property>
 	</bean>	
 	
+	<bean id="userHeadImgUploadAction" class="action.UserHeadImgUpload"
+		scope="prototype">
+		<property name="userService" ref="UserService"></property>
+	</bean>	
 
 	<bean id="userLogoutAction" class="action.UserLogout"
 		scope="prototype">
+	</bean>
+
+	<bean id="sightGetAction" class="action.SightGet"
+		scope="prototype">
+		<property name="sightService" ref="SightService"></property>
+	</bean>
+
+	<bean id="sightListGetAction" class="action.SightListGet"
+		scope="prototype">
+		<property name="sightService" ref="SightService"></property>
+	</bean>
+
+	<bean id="sightGetBySightNameAction" class="action.SightGetBySightName"
+		scope="prototype">
+		<property name="sightService" ref="SightService"></property>
+	</bean>
+
+	<bean id="sightListGetBySightTypeAction" class="action.SightListGetBySightType"
+		scope="prototype">
+		<property name="sightService" ref="SightService"></property>
+	</bean>
+
+	<bean id="scoreCreateAction" class="action.ScoreCreate"
+		scope="prototype">
+		<property name="scoreService" ref="ScoreService"></property>
+	</bean>
+
+	<bean id="scoreListGetAction" class="action.ScoreListGet"
+		scope="prototype">
+		<property name="scoreService" ref="ScoreService"></property>
+	</bean>
+
+	<bean id="footprintCreateAction" class="action.FootprintCreate"
+		scope="prototype">
+		<property name="footprintService" ref="FootprintService"></property>
+	</bean>
+
+	<bean id="footprintDeleteAction" class="action.FootprintDelete"
+		scope="prototype">
+		<property name="footprintService" ref="FootprintService"></property>
+	</bean>
+
+	<bean id="footprintListGetAction" class="action.FootprintListGet"
+		scope="prototype">
+		<property name="footprintService" ref="FootprintService"></property>
+	</bean>
+
+	<bean id="commentCreateAction" class="action.CommentCreate"
+		scope="prototype">
+		<property name="commentService" ref="CommentService"></property>
+	</bean>
+
+	<bean id="commentDeleteAction" class="action.CommentDelete"
+		scope="prototype">
+		<property name="commentService" ref="CommentService"></property>
+	</bean>
+
+	<bean id="commentListGetAction" class="action.CommentListGet"
+		scope="prototype">
+		<property name="commentService" ref="CommentService"></property>
+	</bean>
+
+	<bean id="sightTypeListGetAction" class="action.SightTypeListGet"
+		scope="prototype">
+		<property name="sightTypeService" ref="SightTypeService"></property>
+	</bean>
+
+	<bean id="suggestionCreateAction" class="action.SuggestionCreate"
+		scope="prototype">
+		<property name="suggestionService" ref="SuggestionService"></property>
+	</bean>
+
+	<bean id="suggestionListGetBySightIdAction" class="action.SuggestionListGetBySightId"
+		scope="prototype">
+		<property name="suggestionService" ref="SuggestionService"></property>
+	</bean>
+
+	<bean id="suggestionListGetByUserAction" class="action.SuggestionListGetByUser"
+		scope="prototype">
+		<property name="suggestionService" ref="SuggestionService"></property>
+	</bean>
+
+	<bean id="labelCreateAction" class="action.LabelCreate"
+		scope="prototype">
+		<property name="labelService" ref="LabelService"></property>
+	</bean>
+
+	<bean id="labelListGetBySightIdAction" class="action.LabelListGetBySightId"
+		scope="prototype">
+		<property name="labelService" ref="LabelService"></property>
+	</bean>
+
+	<bean id="labelListGetByUserAction" class="action.LabelListGetByUser"
+		scope="prototype">
+		<property name="labelService" ref="LabelService"></property>
 	</bean>
 
 	<bean id="reminderOutputAction" class="action.WarnReminderOutput"
@@ -71,6 +170,33 @@
 		<property name="entityDAO" ref="EntityDAO"></property>
 	</bean>
 	
+	<bean id="SightService" class="service.impl.SightServiceImpl">
+		<property name="entityDAO" ref="EntityDAO"></property>
+	</bean>
+	
+	<bean id="ScoreService" class="service.impl.ScoreServiceImpl">
+		<property name="entityDAO" ref="EntityDAO"></property>
+	</bean>
+	
+	<bean id="FootprintService" class="service.impl.FootprintServiceImpl">
+		<property name="entityDAO" ref="EntityDAO"></property>
+	</bean>
+	
+	<bean id="CommentService" class="service.impl.CommentServiceImpl">
+		<property name="entityDAO" ref="EntityDAO"></property>
+	</bean>
+
+	<bean id="SightTypeService" class="service.impl.SightTypeServiceImpl">
+		<property name="entityDAO" ref="EntityDAO"></property>
+	</bean>
+
+	<bean id="SuggestionService" class="service.impl.SuggestionServiceImpl">
+		<property name="entityDAO" ref="EntityDAO"></property>
+	</bean>
+
+	<bean id="LabelService" class="service.impl.LabelServiceImpl">
+		<property name="entityDAO" ref="EntityDAO"></property>
+	</bean>
 	<!-- end of service -->
 
 

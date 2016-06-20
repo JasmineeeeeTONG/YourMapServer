@@ -22,26 +22,24 @@ import service.ValidateService;
 public class UserLogin extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 
-	private String username;
+	private String account;
 	private String password;
+	private String type;
 
 	private User user;
 	private IUserService userService;
 	
-	private int error_type = 100;
+	private int error_type = 0;
 	private String error_message = "success";
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public String execute() {
-		System.out.println("===User Login Action execute===");
 		Set params = new HashSet();
-		params.add(username);
+		params.add(account);
 		params.add(password);
-		System.out.println(username);
-		System.out.println(password);
+		params.add(type);
 		//要求params中内容不为空
 		ValidateService.ValidateNecessaryArguments(params);
-		
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession();
 		ServletContext application = session.getServletContext();
@@ -56,12 +54,14 @@ public class UserLogin extends ActionSupport{
 		}
 		
 		User u = new User();
-		u.setUsername(username);
+		u.setAccount(account);
 		u.setPassword(password);
-
+		u.setType(type);
+		
 		u = userService.login(u);
 
 		Integer userID = u.getUserId();
+		user = u;
 		
 		if (sessionPool.containsKey(userID)) {
 			HttpSession se = sessionPool.get(userID);
@@ -78,13 +78,16 @@ public class UserLogin extends ActionSupport{
 		return SUCCESS;
 	}
 
-	public String getUsername() {
-		return username;
+
+	public void setAccount(String account) {
+		this.account = account;
 	}
-	
-	public void setUsername(String username) {
-		this.username = username;
+
+
+	public void setType(String type) {
+		this.type = type;
 	}
+
 
 	public String getPassword() {
 		return password;
@@ -102,14 +105,12 @@ public class UserLogin extends ActionSupport{
 	public void setError_type(int error_type) {
 		this.error_type = error_type;
 	}
-
-	
-	
 	
 	public User getUser() {
 		return user;
 	}
 
+	
 	public String getError_message() {
 		return error_message;
 	}

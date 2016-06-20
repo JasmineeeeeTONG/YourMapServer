@@ -2,24 +2,26 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="bean.Comment" table="comment">
+	<class name="bean.Comment" table="comment" lazy="false">
 		<id name="commentId" type="java.lang.Integer">
-			<column name="commentId" />
+			<column name="comment_id" />
 			<generator class="increment" />
 		</id>
 		<property name="sightId" type="java.lang.Integer">
-			<column name="sightId"  />
+			<column name="sight_id"  />
 		</property>
-		<property name="userId" type="java.lang.Integer">
-			<column name="userId"   />
-		</property>
+
+		<many-to-one name="user" class="bean.User"
+			unique="true" fetch="select" lazy="false">
+			<column name="user_id" not-null="true" />
+		</many-to-one>
 		
 		<property name="commentType" type="java.lang.Integer">
-			<column name="commentType" />
+			<column name="comment_type" />
 		</property>
 		
 		<property name="commentText" type="java.lang.String">
-			<column name="commentText" />
+			<column name="comment_text" />
 		</property>
 		
 	</class>

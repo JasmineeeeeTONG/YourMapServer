@@ -28,7 +28,6 @@ public class WarnReminderOutput extends ActionSupport {
 		WarnReminder reminder = (WarnReminder) session.getAttribute("reminder");
 		error_type = reminder.getError_type();
 		error_message = reminder.getError_message();
-		System.out.println("123123");
 		return "success";
 	}
 

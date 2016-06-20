@@ -4,22 +4,22 @@
 <hibernate-mapping>
 	<class name="bean.Score" table="score">
 		<id name="scoreId" type="java.lang.Integer">
-			<column name="scoreId" />
+			<column name="score_id" />
 			<generator class="increment" />
 		</id>
 		<property name="sightId" type="java.lang.Integer">
-			<column name="sightId"  />
+			<column name="sight_id"  />
 		</property>
 		<property name="userId" type="java.lang.Integer">
-			<column name="userId"   />
+			<column name="user_id"   />
 		</property>
 		
-		<property name="score" type="java.lang.Integer">
-			<column name="score" />
+		<property name="point" type="java.lang.Integer">
+			<column name="point" />
 		</property>
 		
 		<property name="scoreMsg" type="java.lang.String">
-			<column name="scoreMsg" />
+			<column name="score_msg" />
 		</property>
 		
 	</class>

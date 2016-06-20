@@ -1,15 +1,17 @@
 package service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import bean.User;
 import dao.EntityDAO;
 import exception.LoginFailException;
-import exception.RepeatException;
+import exception.UserRepeatException;
 import service.IUserService;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings({ "unchecked", "rawtypes" })
 public class UserServiceImpl implements IUserService {
 	private EntityDAO entityDAO;
 
@@ -23,10 +25,11 @@ public class UserServiceImpl implements IUserService {
 		String hql = "";
 		List<Object> params = new ArrayList<Object>();
 
-		hql = "from User where password=? and user_name=?";
+		hql = "from User where password=? and account=? and type=?";
 		params.add(user.getPassword());
-		params.add(user.getUsername());
-
+		params.add(user.getAccount());
+		params.add(user.getType());
+		
 		User u = (User) entityDAO.findUniqueByHql(hql, params);
 		if (u == null) {
 			throw new LoginFailException();
@@ -36,25 +39,27 @@ public class UserServiceImpl implements IUserService {
 	}
 	
 	@Override
-	public User addUser(User user) {
+	public void addUser(User user) {
 		// TODO Auto-generated method stub
-		String hql = "";
-		List<Object> params = new ArrayList<Object>();
-
-		hql = "from User where user_name=?";
-		params.add(user.getUsername());
-
-		User u = (User) entityDAO.findUniqueByHql(hql, params);
-		if (u != null) {
-			throw new RepeatException();
+		if (entityDAO.isPropertyExist(User.class, "username",
+				user.getUsername())) {
+			throw new UserRepeatException();
+		}
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("type", user.getType());
+		map.put("account", user.getAccount());
+	
+		if (entityDAO.isAllPropertiesExist(User.class, map)) {
+			throw new UserRepeatException();
 		}
 		
-		u = new User();
-		u.setUsername(user.getUsername());
-		u.setPassword(user.getPassword());
-		u.setLoginType("yourmap");
-		entityDAO.save(u);
-		return u;
+		entityDAO.save(user);
+	}
+
+	@Override
+	public void updateUser(User user) {
+		// TODO Auto-generated method stub
+		entityDAO.update(user);
 	}
 
 	

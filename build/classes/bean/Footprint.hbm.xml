@@ -4,18 +4,18 @@
 <hibernate-mapping>
 	<class name="bean.Footprint" table="footprint">
 		<id name="footprintId" type="java.lang.Integer">
-			<column name="footprintId" />
+			<column name="footprint_id" />
 			<generator class="increment" />
 		</id>
 		<property name="sightId" type="java.lang.Integer">
-			<column name="sightId"  />
+			<column name="sight_id"  />
 		</property>
 		<property name="userId" type="java.lang.Integer">
-			<column name="userId"   />
+			<column name="user_id"   />
 		</property>
 		
-		<property name="footprintType" type="java.lang.String">
-			<column name="footprintType" />
+		<property name="footprintType" type="java.lang.Integer">
+			<column name="footprint_type" />
 		</property>
 	
 	</class>

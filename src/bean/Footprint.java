@@ -9,7 +9,7 @@ public class Footprint implements java.io.Serializable {
 	
 	private int userId;
 	
-	private String footprintType;
+	private Integer footprintType;
 
 	public int getFootprintId() {
 		return footprintId;
@@ -35,12 +35,13 @@ public class Footprint implements java.io.Serializable {
 		this.userId = userId;
 	}
 
-	public String getFootprintType() {
+	public Integer getFootprintType() {
 		return footprintType;
 	}
 
-	public void setFootprintType(String footprintType) {
+	public void setFootprintType(Integer footprintType) {
 		this.footprintType = footprintType;
 	}
+
 	
 }

@@ -9,15 +9,19 @@ public class Sight implements java.io.Serializable{
 	
 	private double lat;
 	
-	private String sightName;
+	private String name;
 	
 	private String description;
 	
 	private String detail;
 	
-	private String sightImg;
+	private String mainImg;
 	
-	private double sightScoreAvg;
+	private double avgScore;
+	
+	private String video;
+	
+	private String otherInfo;
 
 	public int getSightId() {
 		return sightId;
@@ -43,12 +47,12 @@ public class Sight implements java.io.Serializable{
 		this.lat = lat;
 	}
 
-	public String getSightName() {
-		return sightName;
+	public String getName() {
+		return name;
 	}
 
-	public void setSightName(String sightName) {
-		this.sightName = sightName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getDescription() {
@@ -67,20 +71,37 @@ public class Sight implements java.io.Serializable{
 		this.detail = detail;
 	}
 
-	public String getSightImg() {
-		return sightImg;
+	public String getMainImg() {
+		return mainImg;
 	}
 
-	public void setSightImg(String sightImg) {
-		this.sightImg = sightImg;
+	public void setMainImg(String mainImg) {
+		this.mainImg = mainImg;
 	}
 
-	public double getSightScoreAvg() {
-		return sightScoreAvg;
+	public double getAvgScore() {
+		return avgScore;
 	}
 
-	public void setSightScoreAvg(double sightScoreAvg) {
-		this.sightScoreAvg = sightScoreAvg;
+	public void setAvgScore(double avgScore) {
+		this.avgScore = avgScore;
 	}
+
+	public String getVideo() {
+		return video;
+	}
+
+	public void setVideo(String video) {
+		this.video = video;
+	}
+
+	public String getOtherInfo() {
+		return otherInfo;
+	}
+
+	public void setOtherInfo(String otherInfo) {
+		this.otherInfo = otherInfo;
+	}
+
 	
 }

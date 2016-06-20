@@ -10,7 +10,9 @@ import java.util.Set;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.criterion.Conjunction;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
@@ -94,6 +96,11 @@ public class EntityDAO<T, PK extends Serializable> extends HibernateDaoSupport {
 	 */
 	public void delete(T t) {
 		getHibernateTemplate().delete(t);
+	}
+
+	public void deleteByCriteria(Class<T> entityClass, final List<Criterion> criterions) {
+		// TODO Auto-generated method stub
+		getHibernateTemplate().deleteAll(findByCriteria(entityClass, null, true, 0, 0, criterions));
 	}
 
 	/**
@@ -396,6 +403,40 @@ public class EntityDAO<T, PK extends Serializable> extends HibernateDaoSupport {
 	}
 
 	/**
+	 * 根据属性值查询实体是否存在，要求所有属性值都存在
+	 * 
+	 * @param entityClass
+	 *            实体类名
+	 * @param properties
+	 *            属性表
+	 * @return 存在则返回true,不存在则返回false
+	 */
+
+	public boolean isAllPropertiesExist(final Class<T> entityClass,
+			final Map<String, Object> properties) {
+		boolean isExist = (Boolean) getHibernateTemplate().execute(
+				new HibernateCallback() {
+					public Object doInHibernate(Session session)
+							throws HibernateException {
+						Set<String> keys = properties.keySet();
+						Criteria criteria = session.createCriteria(entityClass);
+						Iterator<String> iter = keys.iterator();
+						Conjunction conjunction = Restrictions.conjunction();
+						while (iter.hasNext()) {
+							String key = iter.next();
+							Criterion criterion = Restrictions.eq(key,
+									properties.get(key));
+							conjunction.add(criterion);
+						}
+						criteria.add(conjunction);
+						boolean isEmpty = criteria.list().isEmpty();
+						return !isEmpty;
+					}
+				});
+		return isExist;
+	}
+	
+	/**
 	 * 根据属性值列表查询实体是否存在
 	 * 
 	 * @param entityClass
@@ -493,6 +534,19 @@ public class EntityDAO<T, PK extends Serializable> extends HibernateDaoSupport {
 				}
 				List<T> list = (List<T>) query.list();
 				return list;
+			}
+		});
+		return list;
+	}
+	
+	public List<T> findBySql(final String sql){
+		List<T> list = (List<T>) getHibernateTemplate().execute(new HibernateCallback<List>() {
+
+			@Override
+			public List doInHibernate(Session session) throws HibernateException {
+				SQLQuery sqlQuery = session.createSQLQuery(sql);
+				sqlQuery.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
+				return sqlQuery.list();
 			}
 		});
 		return list;

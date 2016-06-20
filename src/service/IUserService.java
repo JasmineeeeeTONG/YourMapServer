@@ -6,7 +6,9 @@ public interface IUserService {
 
 	User login(User u);
 
-	User addUser(User u);
+	void addUser(User u);
+
+	void updateUser(User user);
 
 
 }

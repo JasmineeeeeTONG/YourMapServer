@@ -7,23 +7,23 @@
 			<column name="user_id" />
 			<generator class="increment" />
 		</id>
-		<property name="username" type="java.lang.String">
-			<column name="user_name"  />
+		<property name="account" type="java.lang.String">
+			<column name="account"  />
 		</property>
 		<property name="password" type="java.lang.String">
 			<column name="password"   />
 		</property>
 		
-		<property name="nickname" type="java.lang.String">
-			<column name="nickname" />
+		<property name="username" type="java.lang.String">
+			<column name="username" />
 		</property>
 		
-		<property name="profileImg" type="java.lang.String">
-			<column name="profileImg" />
+		<property name="headImg" type="java.lang.String">
+			<column name="head_img" />
 		</property>
 		
-		<property name="loginType" type="java.lang.String">
-			<column name="loginType" />
+		<property name="type" type="java.lang.String">
+			<column name="type" />
 		</property>		
 	
 	</class>

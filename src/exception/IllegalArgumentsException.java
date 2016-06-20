@@ -7,6 +7,6 @@ public class IllegalArgumentsException extends BaseException {
 	public IllegalArgumentsException(){
 		reminder = new WarnReminder();
 		reminder.setError_type(100);
-		reminder.setError_message("repeat_error");
+		reminder.setError_message("参数有误");
 	}
 }

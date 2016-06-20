@@ -7,9 +7,9 @@ public class Comment implements java.io.Serializable {
 	
 	private int sightId;
 	
-	private int userId;
+	private User user;
 	
-	private int commentType;
+	private Integer commentType;
 	
 	private String commentText;
 
@@ -29,20 +29,21 @@ public class Comment implements java.io.Serializable {
 		this.sightId = sightId;
 	}
 
-	public int getUserId() {
-		return userId;
+
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public int getCommentType() {
-		return commentType;
-	}
-
-	public void setCommentType(int commentType) {
+	public void setCommentType(Integer commentType) {
 		this.commentType = commentType;
+	}
+
+	public Integer getCommentType() {
+		return commentType;
 	}
 
 	public String getCommentText() {

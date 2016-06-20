@@ -20,13 +20,16 @@ import bean.User;
 public class UserRegister extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 
+	
+	private String account;
 	private String username;
 	private String password;
+	private String type;
 
 	private User user;
 	private IUserService userService;
 	
-	private int error_type = 100;
+	private int error_type = 0;
 	private String error_message = "success";
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -35,8 +38,8 @@ public class UserRegister extends ActionSupport {
 		Set params = new HashSet();
 		params.add(username);
 		params.add(password);
-		System.out.println(username);
-		System.out.println(password);
+		params.add(type);
+		params.add(account);
 		//要求params中内容不为空
 		ValidateService.ValidateNecessaryArguments(params);
 		
@@ -56,9 +59,11 @@ public class UserRegister extends ActionSupport {
 		User u = new User();
 		u.setUsername(username);
 		u.setPassword(password);
+		u.setType(type);
+		u.setAccount(account);
 
-		u = userService.addUser(u);
-
+		userService.addUser(u);
+		setUser(u);
 		Integer userID = u.getUserId();
 		
 		if (sessionPool.containsKey(userID)) {
@@ -76,10 +81,6 @@ public class UserRegister extends ActionSupport {
 		return SUCCESS;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-	
 	public void setUsername(String username) {
 		this.username = username;
 	}
@@ -100,10 +101,15 @@ public class UserRegister extends ActionSupport {
 	public void setError_type(int error_type) {
 		this.error_type = error_type;
 	}
+	
+	public void setAccount(String account) {
+		this.account = account;
+	}
 
-	
-	
-	
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	public User getUser() {
 		return user;
 	}

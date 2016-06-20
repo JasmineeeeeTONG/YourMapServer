@@ -6,15 +6,15 @@ public class User implements java.io.Serializable {
 
 	private int userId;
 	
-	private String username;
+	private String account;
 	
 	private String password;
 	
-	private String nickname;
+	private String username;
 	
-	private String profileImg;
+	private String headImg;
 	
-	private String loginType;
+	private String type;
 	
 
 	
@@ -42,28 +42,29 @@ public class User implements java.io.Serializable {
 		this.password = password;
 	}
 
-	public String getLoginType() {
-		return loginType;
+	public String getAccount() {
+		return account;
 	}
 
-	public void setLoginType(String loginType) {
-		this.loginType = loginType;
+	public void setAccount(String account) {
+		this.account = account;
 	}
 
-	public String getProfileImg() {
-		return profileImg;
+	public String getHeadImg() {
+		return headImg;
 	}
 
-	public void setProfileImg(String profileImg) {
-		this.profileImg = profileImg;
+	public void setHeadImg(String headImg) {
+		this.headImg = headImg;
 	}
 
-	public String getNickname() {
-		return nickname;
+	public String getType() {
+		return type;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setType(String type) {
+		this.type = type;
 	}
 
+	
 }

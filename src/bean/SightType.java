@@ -7,7 +7,7 @@ public class SightType implements java.io.Serializable {
 	
 	private int sightId;
 	
-	private String sightTypeText;
+	private String sightType;
 
 	public int getSightTypeId() {
 		return sightTypeId;
@@ -25,11 +25,12 @@ public class SightType implements java.io.Serializable {
 		this.sightId = sightId;
 	}
 
-	public String getSightTypeText() {
-		return sightTypeText;
+	public String getSightType() {
+		return sightType;
 	}
 
-	public void setSightTypeText(String sightTypeText) {
-		this.sightTypeText = sightTypeText;
+	public void setSightType(String sightType) {
+		this.sightType = sightType;
 	}
+
 }

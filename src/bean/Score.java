@@ -9,7 +9,7 @@ public class Score implements java.io.Serializable {
 	
 	private int userId;
 	
-	private int score;
+	private int point;
 	
 	private String scoreMsg;
 
@@ -37,12 +37,12 @@ public class Score implements java.io.Serializable {
 		this.userId = userId;
 	}
 
-	public int getScore() {
-		return score;
+	public int getPoint() {
+		return point;
 	}
 
-	public void setScore(int score) {
-		this.score = score;
+	public void setPoint(int point) {
+		this.point = point;
 	}
 
 	public String getScoreMsg() {

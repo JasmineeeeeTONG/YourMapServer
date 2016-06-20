@@ -4,16 +4,16 @@
 <hibernate-mapping>
 	<class name="bean.SightType" table="sight_type">
 		<id name="sightTypeId" type="java.lang.Integer">
-			<column name="sightTypeId" />
+			<column name="sight_type_id" />
 			<generator class="increment" />
 		</id>
 		
 		<property name="sightId" type="java.lang.Integer">
-			<column name="sightId" />
+			<column name="sight_id" />
 		</property>
 		
-		<property name="sightTypeText" type="java.lang.String">
-			<column name="sightTypeText" />
+		<property name="sightType" type="java.lang.String">
+			<column name="sight_type" />
 		</property>
 		
 	</class>

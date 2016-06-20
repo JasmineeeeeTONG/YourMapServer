@@ -9,6 +9,7 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import bean.User;
+import exception.UserNotLoginException;
 
 
 /**
@@ -25,8 +26,8 @@ public class UserLogout extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
 
-	private int error_type;
-	private String error_message;
+	private int error_type = 0;
+	private String error_message = "success";
 
 	public String execute() {
 
@@ -36,18 +37,16 @@ public class UserLogout extends ActionSupport {
 		
 		
 		if (user != null) {
-			System.out.println(user.getUsername());
 
 			session.removeAttribute("user");
 
 			return SUCCESS;
 		}
 		else {
-			System.out.println("sessionPool中无该用户");
+			throw new UserNotLoginException();
 		}
 		// session池，全局变量，包含每个登录用户的sesssion
 
-		return SUCCESS;
 	}
 
 	public String getError_message() {

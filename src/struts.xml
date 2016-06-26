@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.multipart.maxSize" value="10000000" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<package name="json" namespace="/" extends="json-default">
+	
+		<interceptors>
+			<interceptor name="exceptionInterceptor"
+				class="exception.ExceptionInterceptor"></interceptor>
+			<interceptor-stack name="exceptionStack">
+				<interceptor-ref name="exceptionInterceptor" />
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="json" />
+
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="exceptionStack" />
+		<global-results>
+			<result name="business_exception" type="chain">reminderOutput</result>
+			<result name="java_exception" type="chain">reminderOutput</result>
+		</global-results>
+		
+
+		<action name="userLogin" class="userLoginAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message,user.*
+				</param>
+			</result>
+		</action>
+		
+		<action name="userRegister" class="userRegisterAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message,user.*
+				</param>
+			</result>
+		</action>		
+		
+		<action name="userHeadImgUpload" class="userHeadImgUploadAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message,url
+				</param>
+			</result>
+		</action>		
+
+		<action name="userLogout" class="userLogoutAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message,user.*
+				</param>
+			</result>		
+		</action>
+		
+		<action name="sightGet" class="sightGetAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message,sight.*
+				</param>
+			</result>		
+		</action>
+
+		<action name="sightListGet" class="sightListGetAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message,sightList.*
+				</param>
+			</result>		
+		</action>
+
+		<action name="sightListGetBySightType" class="sightListGetBySightTypeAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message,sightList.*
+				</param>
+			</result>		
+		</action>
+
+		<action name="sightGetBySightName" class="sightGetBySightNameAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message,sight.*
+				</param>
+			</result>		
+		</action>
+
+		<action name="scoreCreate" class="scoreCreateAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message
+				</param>
+			</result>		
+		</action>
+
+		<action name="scoreListGet" class="scoreListGetAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message,scoreList.*
+				</param>
+			</result>		
+		</action>
+
+		<action name="footprintCreate" class="footprintCreateAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message
+				</param>
+			</result>		
+		</action>
+
+		<action name="footprintDelete" class="footprintDeleteAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message
+				</param>
+			</result>		
+		</action>
+
+		<action name="footprintListGet" class="footprintListGetAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message,sightList.*
+				</param>
+			</result>		
+		</action>
+
+		<action name="commentCreate" class="commentCreateAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message
+				</param>
+			</result>		
+		</action>
+
+		<action name="commentDelete" class="commentDeleteAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message
+				</param>
+			</result>		
+		</action>
+
+		<action name="commentListGet" class="commentListGetAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message,commentList.*
+				</param>
+			</result>		
+		</action>
+
+		<action name="sightTypeListGet" class="sightTypeListGetAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message,sightTypeList.*
+				</param>
+			</result>		
+		</action>
+
+		<action name="suggestionCreate" class="suggestionCreateAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message
+				</param>
+			</result>		
+		</action>
+
+		<action name="suggestionListGetBySightId" class="suggestionListGetBySightIdAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message,suggestionList.*
+				</param>
+			</result>		
+		</action>
+
+		<action name="suggestionListGetByUser" class="suggestionListGetByUserAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message,suggestionList.*
+				</param>
+			</result>		
+		</action>
+
+		<action name="labelCreate" class="labelCreateAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message
+				</param>
+			</result>		
+		</action>
+
+		<action name="labelListGetBySightId" class="labelListGetBySightIdAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message,labelList.*
+				</param>
+			</result>		
+		</action>
+
+		<action name="labelListGetByUser" class="labelListGetByUserAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message,labelList.*
+				</param>
+			</result>		
+		</action>
+
+		<action name="reminderOutput" class="reminderOutputAction">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message
+				</param>
+			</result>
+		</action>
+		
+
+	</package>
+</struts>    

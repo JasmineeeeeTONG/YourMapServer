@@ -13,6 +13,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import bean.User;
 import exception.FileUploadException;
+import exception.UserNotLoginException;
 import service.IUserService;
 import service.ValidateService;
 import util.RandomUtil;
@@ -42,13 +43,17 @@ public class UserHeadImgUpload extends ActionSupport{
 		User user = null;
 		HttpSession session = ServletActionContext.getRequest().getSession();
 		user = (User) session.getAttribute("user");
+		if (user == null) {
+			throw new UserNotLoginException();
+		}
 		
 		String realpath = ServletActionContext.getServletContext().getRealPath("/");
         if(headImg != null) {
-           File savefile = new File(new File(realpath+"/headImg"), RandomUtil.generateUUID() + ".jepg");
+           File savefile = new File(new File(realpath+"/headImg"), RandomUtil.generateUUID() + ".jpg");
            if (!savefile.getParentFile().exists())
                savefile.getParentFile().mkdirs();
            FileUtils.copyFile(headImg, savefile);
+           System.out.println(savefile.getAbsolutePath());
            user.setHeadImg(savefile.getAbsolutePath().replace(realpath, ""));
            userService.updateUser(user);
            url = user.getHeadImg();

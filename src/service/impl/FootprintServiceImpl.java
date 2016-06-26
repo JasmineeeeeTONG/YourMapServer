@@ -52,7 +52,7 @@ public class FootprintServiceImpl implements IFootprintService{
 		// TODO Auto-generated method stub
 		List<Criterion> criterions = new ArrayList<Criterion>();
 		criterions.add(Restrictions.eq("userId", userId));
-		criterions.add(Restrictions.eq("footprintType", footprintType));	
+		criterions.add(Restrictions.eq("footprintType", Integer.parseInt(footprintType)));	
 		List<Footprint> footprintList = entityDAO.findAll(Footprint.class, "footprintId", false, criterions);
 		return footprintList;
 	}

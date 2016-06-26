@@ -72,7 +72,6 @@ public class SightServiceImpl implements ISightService{
 			hql = hql + "st.sightType=" + sightType.get(i) + " or ";
 		}
 		hql = hql + "st.sightType=" + sightType.get(sightType.size() - 1) + " )";
-		System.out.println(hql);
 		sightList = entityDAO.findByHql(hql);
 		return sightList;
 	}

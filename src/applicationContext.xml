@@ -98,6 +98,7 @@
 	<bean id="footprintListGetAction" class="action.FootprintListGet"
 		scope="prototype">
 		<property name="footprintService" ref="FootprintService"></property>
+		<property name="sightService" ref="SightService"></property>
 	</bean>
 
 	<bean id="commentCreateAction" class="action.CommentCreate"

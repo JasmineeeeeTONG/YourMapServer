@@ -61,6 +61,7 @@ public class UserRegister extends ActionSupport {
 		u.setPassword(password);
 		u.setType(type);
 		u.setAccount(account);
+		u.setHeadImg("headImg/1.jpg");
 
 		userService.addUser(u);
 		setUser(u);

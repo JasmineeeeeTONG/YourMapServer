@@ -121,7 +121,7 @@
 		<action name="footprintListGet" class="footprintListGetAction">
 			<result name="success" type="json">
 				<param name="includeProperties">
-					error_type,error_message,footprintList.*
+					error_type,error_message,sightList.*
 				</param>
 			</result>		
 		</action>

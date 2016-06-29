@@ -16,4 +16,8 @@ public interface ISightService {
 
 	Sight getSightBySightName(String sightName);
 	
+	void updateSight(Sight sight);
+
+	List<Sight> getAllSight();
+	
 }

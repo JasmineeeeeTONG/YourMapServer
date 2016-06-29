@@ -38,6 +38,7 @@
 		<mapping resource="bean/Img.hbm.xml" />
 		<mapping resource="bean/Suggestion.hbm.xml" />
 		<mapping resource="bean/Label.hbm.xml" />
+		<mapping resource="bean/Video.hbm.xml" />
 		
 	</session-factory>
 

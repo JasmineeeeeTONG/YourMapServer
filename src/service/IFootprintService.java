@@ -11,5 +11,7 @@ public interface IFootprintService {
 	void deleteFootprint(Footprint footprint);
 
 	List<Footprint> getFootprintList(int userId, String footprintType);
+
+	List<Footprint> getAllFootprint();
 	
 }

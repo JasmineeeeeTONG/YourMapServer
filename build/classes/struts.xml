@@ -30,6 +30,14 @@
 			</result>
 		</action>
 		
+		<action name="userThirdLogin" class="userThirdLoginAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message,user.*
+				</param>
+			</result>
+		</action>
+
 		<action name="userRegister" class="userRegisterAction">
 			<result name="success" type="json">
 				<param name="includeProperties">
@@ -65,7 +73,7 @@
 		<action name="sightListGet" class="sightListGetAction">
 			<result name="success" type="json">
 				<param name="includeProperties">
-					error_type,error_message,sightList.*
+					error_type,error_message,sightList.*,labelList.*
 				</param>
 			</result>		
 		</action>
@@ -150,6 +158,14 @@
 			</result>		
 		</action>
 
+		<action name="commentListGetByUser" class="commentListGetByUserAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message,commentList.*
+				</param>
+			</result>		
+		</action>
+
 		<action name="sightTypeListGet" class="sightTypeListGetAction">
 			<result name="success" type="json">
 				<param name="includeProperties">
@@ -202,6 +218,54 @@
 			<result name="success" type="json">
 				<param name="includeProperties">
 					error_type,error_message,labelList.*
+				</param>
+			</result>		
+		</action>
+
+		<action name="imgUpload" class="imgUploadAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message
+				</param>
+			</result>		
+		</action>
+
+		<action name="imgGet" class="imgGetAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message,imgList.*
+				</param>
+			</result>		
+		</action>
+
+		<action name="recommendGet" class="recommendGetAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message,sightList.*
+				</param>
+			</result>		
+		</action>
+
+		<action name="videoUpload" class="videoUploadAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message
+				</param>
+			</result>		
+		</action>
+
+		<action name="videoGet" class="videoGetAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message,videoList.*
+				</param>
+			</result>		
+		</action>
+
+		<action name="threeDUpload" class="threeDUploadAction">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					error_type,error_message
 				</param>
 			</result>		
 		</action>

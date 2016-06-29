@@ -21,10 +21,8 @@ import org.springframework.orm.hibernate4.HibernateCallback;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 /**
- * Dao层接口的实现类 许多人习惯根据不多的业务逻辑定义不同的DAO层接口，如UserDAO,CommentDAO等等，
- * 这样往往使得编码量十分庞大，而且带来了维护的困难，因此，抽取此DAO层接口，收录大部分 DAO层必须的方法，以供Service层调用。
  * 
- * @author tangzhihui
+ * 
  * @version 1.0
  * @param <T>
  *            范型，指实体类

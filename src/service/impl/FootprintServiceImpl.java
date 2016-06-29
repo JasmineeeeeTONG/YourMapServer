@@ -57,4 +57,12 @@ public class FootprintServiceImpl implements IFootprintService{
 		return footprintList;
 	}
 
+	@Override
+	public List<Footprint> getAllFootprint() {
+		// TODO Auto-generated method stub
+		List<Criterion> criterions = new ArrayList<Criterion>();
+		List<Footprint> footprintList = entityDAO.findAll(Footprint.class, "footprintId", false, criterions);
+		return footprintList;
+	}
+
 }

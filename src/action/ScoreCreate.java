@@ -1,6 +1,7 @@
 package action;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,10 +12,13 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import bean.Score;
+import bean.Sight;
 import bean.User;
 import exception.IllegalArgumentsException;
+import exception.NotExistException;
 import exception.UserNotLoginException;
 import service.IScoreService;
+import service.ISightService;
 import service.ValidateService;
 
 public class ScoreCreate extends ActionSupport{
@@ -25,6 +29,7 @@ public class ScoreCreate extends ActionSupport{
 	private String scoreMsg;
 
 	private IScoreService scoreService;
+	private ISightService sightService;
 	
 	private int error_type = 0;
 	private String error_message = "success";
@@ -54,8 +59,27 @@ public class ScoreCreate extends ActionSupport{
 		score.setUserId(user.getUserId());
 		score.setPoint(point);
 		score.setSightId(sightId);
-		
+		Sight sight = sightService.getSight(score.getSightId());
+		if (sight == null) {
+			throw new NotExistException();
+		}
 		scoreService.addScore(score);
+		
+		
+		List<Score> scores = scoreService.getScoreList(sightId);
+		
+		int total = 0;
+		
+		for (int i = 0; i < scores.size(); i++) {
+			Score s = scores.get(i);
+			total = s.getPoint() + total;
+		}
+		
+		double d = (double)(total) / (double)(scores.size());
+		
+		sight.setAvgScore(d);
+		
+		sightService.updateSight(sight);
 		
 		return SUCCESS;
 	}
@@ -83,5 +107,11 @@ public class ScoreCreate extends ActionSupport{
 	public String getError_message() {
 		return error_message;
 	}
+
+	public void setSightService(ISightService sightService) {
+		this.sightService = sightService;
+	}
+	
+	
 	
 }

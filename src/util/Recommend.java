@@ -1,4 +1,4 @@
-package recommend;
+package util;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -17,9 +17,12 @@ public class Recommend {
 	int[][] sightMatrix;
 	int[][] visitedMatrix;
 	
-	public Recommend() {
+	public Recommend(List<User> users, List<Sight> sights, List<Footprint> footprints) {
 		//userList = getAllUsers();
 		//sightList = getAllSights();
+		userList = users;
+		sightList = sights;
+		footprintList = footprints;
 		uSize = userList.size();
 		sSize = sightList.size();
 		
@@ -27,7 +30,8 @@ public class Recommend {
 		sightMatrix = new int[sSize][uSize];
 		//所有有user足迹的景点标记矩阵，所有入口初始化为0
 		visitedMatrix = new int[sSize][uSize];
-		footprintList = new LinkedList<Footprint>();
+		
+		calculateSightMatrix();
 	}
 	
 	public void calculateSightMatrix() {
@@ -38,17 +42,17 @@ public class Recommend {
 			int userId = print.getUserId();
 			int sightId = print.getSightId();
 			if (type==1) {//收藏
-				sightMatrix[sightId][userId] += 2;
+				sightMatrix[sightId - 1][userId - 1] += 2;
 			}
 			else if (type==2) {//足迹
-				sightMatrix[sightId][userId] += 1;
-				visitedMatrix[sightId][userId] = 1;
+				sightMatrix[sightId - 1][userId - 1] += 1;
+				visitedMatrix[sightId - 1][userId - 1] = 1;
 			}
 			else if (type==3) {//心愿单
-				sightMatrix[sightId][userId] += 2;
+				sightMatrix[sightId - 1][userId - 1] += 2;
 			}
 			else if (type==4) {//分享
-				sightMatrix[sightId][userId] += 2;
+				sightMatrix[sightId - 1][userId - 1] += 2;
 			}
 		}
 	}

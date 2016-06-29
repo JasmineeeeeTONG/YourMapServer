@@ -11,12 +11,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * 初始化过滤器
- * 
- * @author tom
- * @since 2014-7-20
- */
+
 public class InitFilter implements Filter {
 	// 处理请求的起点，对请求和返回编码，记录请求
 	public void doFilter(ServletRequest arg0, ServletResponse arg1,

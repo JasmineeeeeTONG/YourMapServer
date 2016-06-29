@@ -3,12 +3,6 @@ package util;
 import java.util.Random;
 import java.util.UUID;
 
-
-/**
- * 随机码生成工具类
- * @author tom
- * @since  2014-7-16
- */
 public class RandomUtil {
 	public static void main(String[] args){
 		System.out.println(generateRandomCode(12));

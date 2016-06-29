@@ -67,11 +67,11 @@ public class SightServiceImpl implements ISightService{
 		String hql = "";
 		List<Sight> sightList = new ArrayList<Sight>();
 		if (sightType.size() == 0) return sightList;
-		hql = "select distinct s from Sight as s, SightType as st where s.sightId = st.sightId and (";
+		hql = "select distinct s from Sight as s, Label as st where s.sightId = st.sightId and (";
 		for (int i = 0; i < sightType.size() - 1; i++){
-			hql = hql + "st.sightType=" + sightType.get(i) + " or ";
+			hql = hql + "st.type=" + sightType.get(i) + " or ";
 		}
-		hql = hql + "st.sightType=" + sightType.get(sightType.size() - 1) + " )";
+		hql = hql + "st.type=" + sightType.get(sightType.size() - 1) + " )";
 		sightList = entityDAO.findByHql(hql);
 		return sightList;
 	}
@@ -85,6 +85,20 @@ public class SightServiceImpl implements ISightService{
 			return null;
 		// TODO Auto-generated method stub
 		return sights.get(0);
+	}
+
+	@Override
+	public void updateSight(Sight sight) {
+		// TODO Auto-generated method stub
+		entityDAO.update(sight);
+	}
+
+	@Override
+	public List<Sight> getAllSight() {
+		// TODO Auto-generated method stub
+		List<Criterion> criterions = new ArrayList<Criterion>();
+		List<Sight> sights = entityDAO.findAll(Sight.class, "sightId", true, criterions);
+		return sights;
 	}
 
 }

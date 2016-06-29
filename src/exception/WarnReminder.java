@@ -4,8 +4,7 @@ import java.io.Serializable;
 
 /**
  * 错误提示类
- * @author GAO
- * @since 2016-05-28
+ * 
  */
 public class WarnReminder implements Serializable{
 

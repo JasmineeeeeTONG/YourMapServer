@@ -13,10 +13,10 @@
 		destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
 
-		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/adweb?characterEncoding=utf8"></property>
+		<property name="jdbcUrl" value="jdbc:mysql://139.129.10.20:3306/adweb?characterEncoding=utf8"></property>
 
 		<property name="user" value="root" />
-		<property name="password" value="guang123456" />
+		<property name="password" value="fudanchenxi" />
 
 		<property name="maxPoolSize" value="12" />
 		<property name="minPoolSize" value="0" />
@@ -41,6 +41,11 @@
 		<property name="userService" ref="UserService"></property>
 	</bean>
 	
+	<bean id="userThirdLoginAction" class="action.UserThirdLogin"
+		scope="prototype">
+		<property name="userService" ref="UserService"></property>
+	</bean>
+
 	<bean id="userRegisterAction" class="action.UserRegister"
 		scope="prototype">
 		<property name="userService" ref="UserService"></property>
@@ -63,6 +68,7 @@
 	<bean id="sightListGetAction" class="action.SightListGet"
 		scope="prototype">
 		<property name="sightService" ref="SightService"></property>
+		<property name="labelService" ref="LabelService"></property>
 	</bean>
 
 	<bean id="sightGetBySightNameAction" class="action.SightGetBySightName"
@@ -78,6 +84,7 @@
 	<bean id="scoreCreateAction" class="action.ScoreCreate"
 		scope="prototype">
 		<property name="scoreService" ref="ScoreService"></property>
+		<property name="sightService" ref="SightService"></property>
 	</bean>
 
 	<bean id="scoreListGetAction" class="action.ScoreListGet"
@@ -116,6 +123,11 @@
 		<property name="commentService" ref="CommentService"></property>
 	</bean>
 
+	<bean id="commentListGetByUserAction" class="action.CommentListGetByUser"
+		scope="prototype">
+		<property name="commentService" ref="CommentService"></property>
+	</bean>
+
 	<bean id="sightTypeListGetAction" class="action.SightTypeListGet"
 		scope="prototype">
 		<property name="sightTypeService" ref="SightTypeService"></property>
@@ -149,6 +161,37 @@
 	<bean id="labelListGetByUserAction" class="action.LabelListGetByUser"
 		scope="prototype">
 		<property name="labelService" ref="LabelService"></property>
+	</bean>
+
+	<bean id="imgUploadAction" class="action.ImgUpload"
+		scope="prototype">
+		<property name="imgService" ref="ImgService"></property>
+	</bean>
+	
+	<bean id="imgGetAction" class="action.ImgGet"
+		scope="prototype">
+		<property name="imgService" ref="ImgService"></property>
+	</bean>
+
+	<bean id="recommendGetAction" class="action.RecommendGet"
+		scope="prototype">
+		<property name="footprintService" ref="FootprintService"></property>
+		<property name="sightService" ref="SightService"></property>
+		<property name="userService" ref="UserService"></property>
+	</bean>
+
+	<bean id="videoUploadAction" class="action.VideoUpload"
+		scope="prototype">
+		<property name="videoService" ref="VideoService"></property>
+	</bean>
+	
+	<bean id="videoGetAction" class="action.VideoGet"
+		scope="prototype">
+		<property name="videoService" ref="VideoService"></property>
+	</bean>
+
+	<bean id="threeDUploadAction" class="action.ThreeDUpload"
+		scope="prototype">
 	</bean>
 
 	<bean id="reminderOutputAction" class="action.WarnReminderOutput"
@@ -198,6 +241,15 @@
 	<bean id="LabelService" class="service.impl.LabelServiceImpl">
 		<property name="entityDAO" ref="EntityDAO"></property>
 	</bean>
+	
+	<bean id="ImgService" class="service.impl.ImgServiceImpl">
+		<property name="entityDAO" ref="EntityDAO"></property>
+	</bean>
+	
+	<bean id="VideoService" class="service.impl.VideoServiceImpl">
+		<property name="entityDAO" ref="EntityDAO"></property>
+	</bean>
+
 	<!-- end of service -->
 
 

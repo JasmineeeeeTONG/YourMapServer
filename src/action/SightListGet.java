@@ -1,12 +1,15 @@
 package action;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import bean.Label;
 import bean.Sight;
+import service.ILabelService;
 import service.ISightService;
 import service.ValidateService;
 
@@ -20,8 +23,10 @@ public class SightListGet extends ActionSupport {
 	private String sightType;
 
 	private ISightService sightService;
+	private ILabelService labelService;
 	
 	private List<Sight> sightList;
+	private List<List<Label>> labelList;
 	private int error_type = 0;
 	private String error_message = "success";
 
@@ -35,12 +40,20 @@ public class SightListGet extends ActionSupport {
 		params.add(lng2);
 		ValidateService.ValidateNecessaryArguments(params);
 
+		sightList = new ArrayList<Sight>();
+		
 		if (sightType == null || sightType.isEmpty()) {
-			System.out.println(sightService);
 			sightList = sightService.getSightList(lng1, lat1, lng2, lat2);			
 		}
 		else {
 			sightList = sightService.getSightListByCoordinateAndSightType(lng1, lat1, lng2, lat2, sightType);
+		}
+		
+		labelList = new ArrayList<List<Label>>();
+		
+		for (int i = 0; i < sightList.size(); i++) {
+			List<Label> labels = labelService.getLabelListBySightId(sightList.get(i).getSightId());
+			labelList.add(labels);
 		}
 		
 		return SUCCESS;
@@ -90,6 +103,16 @@ public class SightListGet extends ActionSupport {
 
 	public String getError_message() {
 		return error_message;
+	}
+
+	public List<List<Label>> getLabelList() {
+		return labelList;
+	}
+
+
+
+	public void setLabelService(ILabelService labelService) {
+		this.labelService = labelService;
 	}
 	
 	

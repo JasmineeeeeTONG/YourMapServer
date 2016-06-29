@@ -55,4 +55,15 @@ public class CommentServiceImpl implements ICommentService{
 		return commentList;
 	}
 
+	@Override
+	public List<Comment> getCommentList(Integer sightId, Integer commentType, int userId) {
+		// TODO Auto-generated method stub
+		List<Criterion> criterions = new ArrayList<Criterion>();
+		criterions.add(Restrictions.eq("sightId", sightId));
+		criterions.add(Restrictions.eq("commentType", commentType));	
+		criterions.add(Restrictions.eq("userId", userId));			
+		List<Comment> commentList = entityDAO.findAll(Comment.class, "commentId", false, criterions);
+		return commentList;
+	}
+
 }

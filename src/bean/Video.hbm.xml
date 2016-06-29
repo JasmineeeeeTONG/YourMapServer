@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bean.Video" table="video">
+		<id name="vid" type="java.lang.Integer">
+			<column name="vid" />
+			<generator class="increment" />
+		</id>
+		<property name="sightId" type="java.lang.Integer">
+			<column name="sight_id"  />
+		</property>
+		<property name="url" type="java.lang.String">
+			<column name="url"   />
+		</property>
+		
+	</class>
+</hibernate-mapping>

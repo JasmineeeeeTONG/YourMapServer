@@ -13,8 +13,8 @@ import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 /**
  * 异常拦截器，统一处理
  * 
- * @author tom
- * @since 2014-06-07
+ * 
+ * 
  */
 
 public class ExceptionInterceptor extends AbstractInterceptor {

@@ -43,7 +43,8 @@ public class LabelServiceImpl implements ILabelService{
 		String sql = "";
 		List<Label> labelList = new ArrayList<Label>();
 
-		sql = "select a.* from label a,(select distinct max(label_id) as label_id from label group by type) b where a.label_id=b.label_id and a.sight_id=" + sightId;
+		sql = "select a.* from label a,(select distinct max(label_id) as label_id from label where label.sight_id = " + sightId + " group by type) b where a.label_id=b.label_id and a.sight_id=" + sightId;
+		System.out.println(sql);
 		labelList = (List<Label>) entityDAO.findBySql(sql);
 		return labelList;
 	}

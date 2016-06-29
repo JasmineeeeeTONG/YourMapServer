@@ -11,5 +11,7 @@ public interface ICommentService {
 	void deleteComment(Comment comment);
 
 	List<Comment> getCommentList(Integer sightId, Integer commentType);
+
+	List<Comment> getCommentList(Integer sightId, Integer commentType, int userId);
 	
 }

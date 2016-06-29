@@ -53,7 +53,6 @@ public class UserHeadImgUpload extends ActionSupport{
            if (!savefile.getParentFile().exists())
                savefile.getParentFile().mkdirs();
            FileUtils.copyFile(headImg, savefile);
-           System.out.println(savefile.getAbsolutePath());
            user.setHeadImg(savefile.getAbsolutePath().replace(realpath, ""));
            userService.updateUser(user);
            url = user.getHeadImg();
